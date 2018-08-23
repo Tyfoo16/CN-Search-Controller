@@ -1,8 +1,22 @@
 # CN-Search-Controller
-Chinese Characters Search controller Demo 
+Pin Yin Characters Search controller Demo 
 
-Example of search controller that able to search with chinese input.
-It will show how to serialize unicode characters from json string and convert human readable words.
+Example of search controller that able to search with pinyin input.
+
+It able to read from pinyin characters with or without space and acronym characters.
+
+Examples:
+
+Input : yi qian ling yi ye
+Output: 一千零一夜 
+
+Input : yiqianlingyiye
+Output: 一千零一夜 
+
+Input : yqlyy
+Output: 一千零一夜 
+
+It also will show how to serialize unicode characters from json string and convert human readable words.
 
 3 types of sample data provided.
 - Unicode Characters in JSON string
