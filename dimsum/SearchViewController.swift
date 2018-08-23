@@ -129,19 +129,26 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
     
     func filterContentForSearchText(_ searchText: String) {
         
+        // Return filtered dramas contains search text
         filtered = dramaList.filter({( text : String) -> Bool in
             if searchBarIsEmpty() {
                 return true
             } else {
-                // Parse drama title to pin yin and compare with search text
-                // Handle the case pinyin characters with or without spaces
+
                 let textWithoutSpace = text.toPinyin().removingWhitespaces()
+                let acronymText = text.toPinyinAcronym()
+                // Compare the text in following case:
+                // - pinyin characters with or without spaces
+                // - acronym characters (e.g 一千零一夜 = yqlyy)
                 let isPinYin = text.toPinyin().contains(searchText.lowercased()) ||
-                    textWithoutSpace.contains(searchText.lowercased())
+                    textWithoutSpace.contains(searchText.lowercased()) ||
+                    acronymText.contains(searchText.lowercased())
+                
                 if isPinYin {
                     return isPinYin
                 }
-                // compare the title with oher inputs(e.g. English, Chinese Simpified)
+                
+                // compare the text with oher inputs(e.g. English, Chinese Simpified)
                 return text.contains(searchText)
             }
         })
