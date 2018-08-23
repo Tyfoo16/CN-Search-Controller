@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import HanziPinyin
 
 class SearchViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
@@ -127,11 +128,21 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
     // MARK: - Private instance methods
     
     func filterContentForSearchText(_ searchText: String) {
-        filtered = dramaList.filter({( occ : String) -> Bool in
+        
+        filtered = dramaList.filter({( text : String) -> Bool in
             if searchBarIsEmpty() {
                 return true
             } else {
-                return occ.contains(searchText)
+                // Parse drama title to pin yin and compare with search text
+                // Handle the case pinyin characters with or without spaces
+                let textWithoutSpace = text.toPinyin().removingWhitespaces()
+                let isPinYin = text.toPinyin().contains(searchText.lowercased()) ||
+                    textWithoutSpace.contains(searchText.lowercased())
+                if isPinYin {
+                    return isPinYin
+                }
+                // compare the title with oher inputs(e.g. English, Chinese Simpified)
+                return text.contains(searchText)
             }
         })
         tableView.reloadData()

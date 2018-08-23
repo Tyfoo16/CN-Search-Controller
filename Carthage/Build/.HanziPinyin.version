@@ -1,0 +1,9 @@
+{
+  "commitish" : "0.0.6",
+  "iOS" : [
+    {
+      "name" : "HanziPinyin",
+      "hash" : "45ddb2724a9ae24b2f6292657a631bfd4d2a8b95b85fda66c62f1260a37d2429"
+    }
+  ]
+}

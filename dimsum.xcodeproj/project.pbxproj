@@ -15,6 +15,7 @@
 		E329B6CC212C3EAA00BBC1A0 /* SearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E329B6CA212C3EAA00BBC1A0 /* SearchTableViewCell.swift */; };
 		E329B6CD212C3EAA00BBC1A0 /* SearchTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E329B6CB212C3EAA00BBC1A0 /* SearchTableViewCell.xib */; };
 		E329B6CF212C3F4E00BBC1A0 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E329B6CE212C3F4E00BBC1A0 /* Extensions.swift */; };
+		E32EEEF3212E5AF700885F68 /* HanziPinyin.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E32EEEF2212E5AF700885F68 /* HanziPinyin.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		E329B6CA212C3EAA00BBC1A0 /* SearchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewCell.swift; sourceTree = "<group>"; };
 		E329B6CB212C3EAA00BBC1A0 /* SearchTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchTableViewCell.xib; sourceTree = "<group>"; };
 		E329B6CE212C3F4E00BBC1A0 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		E32EEEF2212E5AF700885F68 /* HanziPinyin.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HanziPinyin.framework; path = Carthage/Build/iOS/HanziPinyin.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -35,6 +37,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E32EEEF3212E5AF700885F68 /* HanziPinyin.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -46,6 +49,7 @@
 			children = (
 				E329B6B7212C3B9800BBC1A0 /* dimsum */,
 				E329B6B6212C3B9800BBC1A0 /* Products */,
+				E32EEEF1212E5AF700885F68 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -73,6 +77,14 @@
 			path = dimsum;
 			sourceTree = "<group>";
 		};
+		E32EEEF1212E5AF700885F68 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				E32EEEF2212E5AF700885F68 /* HanziPinyin.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -83,6 +95,7 @@
 				E329B6B1212C3B9800BBC1A0 /* Sources */,
 				E329B6B2212C3B9800BBC1A0 /* Frameworks */,
 				E329B6B3212C3B9800BBC1A0 /* Resources */,
+				E32EEEF4212E5D0900885F68 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -139,6 +152,23 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		E32EEEF4212E5D0900885F68 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/HanziPinyin.framework",
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		E329B6B1212C3B9800BBC1A0 /* Sources */ = {
@@ -293,6 +323,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = dimsum/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -310,6 +344,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = dimsum/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
